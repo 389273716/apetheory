@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="GrayContentStyle">
+        <item name="android:textSize">@dimen/body_font_size_12</item>
+        <item name="android:textColor">@color/gray_9</item>
+    </style>
+    <style name="TitleStyle">
+        <item name="android:textSize">@dimen/label_font_size_14</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="2dp">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/sdv_article_list_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="4dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_article_list_title"
+            style="@style/TitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignTop="@id/sdv_article_list_image"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/sdv_article_list_image"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            tools:text="这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题"/>
+
+        <TextView
+            android:id="@+id/tv_article_list_digest"
+            style="@style/GrayContentStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_article_list_title"
+            android:layout_below="@+id/tv_article_list_title"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@+id/sdv_article_list_image"
+            android:ellipsize="end"
+            android:maxLines="3"
+            tools:text="这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

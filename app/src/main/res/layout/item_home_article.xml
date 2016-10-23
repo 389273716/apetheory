@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="2dp"
+    card_view:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tv_home_type_name"
+            style="@style/GrayContentStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            tools:text="来自CSDN"/>
+
+        <TextView
+            android:id="@+id/tv_home_time"
+            style="@style/GrayContentStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            tools:text="2015/03/15"/>
+
+        <ImageView
+            android:id="@+id/sdv_home_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tv_home_type_name"
+            android:layout_marginTop="4dp"
+           />
+
+        <TextView
+            android:id="@+id/tv_home_title"
+            style="@style/TitleStyle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@id/sdv_home_image"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/sdv_home_image"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            tools:text="这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题这是文章标题"/>
+
+        <TextView
+            android:id="@+id/tv_home_digest"
+            style="@style/GrayContentStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_home_title"
+            android:layout_below="@+id/tv_home_title"
+            android:layout_marginTop="1dp"
+            android:layout_toRightOf="@+id/sdv_home_image"
+            android:ellipsize="end"
+            android:maxLines="3"
+            tools:text="这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

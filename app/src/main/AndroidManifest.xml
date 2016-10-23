@@ -1,0 +1,42 @@
+<manifest package="com.tc.apetheory"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!-- 友盟 -->
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="24234"/>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng"/>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="25332532"/>
+
+        <activity
+            android:name=".view.activity.TestActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.activity.SplashActivity"
+            android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
