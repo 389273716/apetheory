@@ -16,7 +16,7 @@ import com.tc.apetheory.presenter.BasePresenter;
  */
 
 public class TestActivity extends BaseActivity {
-
+    private static final String TAG = TestActivity.class.getSimpleName();
     private String url = "http://i.imgur.com/DvpvklR.png";
     private ImageView mIvImg;
 

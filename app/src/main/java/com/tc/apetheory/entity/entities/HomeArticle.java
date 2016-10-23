@@ -20,7 +20,7 @@ public class HomeArticle {
     private int typeId;//	类型表的id
 
     public String getId() {
-        return id;
+        return id == null ? "" : id;
     }
 
     public void setId(String id) {
@@ -28,7 +28,7 @@ public class HomeArticle {
     }
 
     public String getTags() {
-        return tags;
+        return tags == null ? "" : tags;
     }
 
     public void setTags(String tags) {
@@ -36,7 +36,7 @@ public class HomeArticle {
     }
 
     public String getTitle() {
-        return title;
+        return title == null ? "" : title;
     }
 
     public void setTitle(String title) {
@@ -44,7 +44,7 @@ public class HomeArticle {
     }
 
     public String getTitleDate() {
-        return titleDate;
+        return titleDate == null ? "" : titleDate;
     }
 
     public void setTitleDate(String titleDate) {
@@ -52,7 +52,7 @@ public class HomeArticle {
     }
 
     public String getInputDate() {
-        return inputDate;
+        return inputDate == null ? "" : inputDate;
     }
 
     public void setInputDate(String inputDate) {
@@ -60,7 +60,7 @@ public class HomeArticle {
     }
 
     public String getUrl() {
-        return url;
+        return url == null ? "" : url;
     }
 
     public void setUrl(String url) {
@@ -68,7 +68,7 @@ public class HomeArticle {
     }
 
     public String getName() {
-        return name;
+        return name == null ? "" : name;
     }
 
     public void setName(String name) {
@@ -76,7 +76,7 @@ public class HomeArticle {
     }
 
     public String getImgUrl() {
-        return imgUrl;
+        return imgUrl == null ? "" : imgUrl;
     }
 
     public void setImgUrl(String imgUrl) {
@@ -84,7 +84,7 @@ public class HomeArticle {
     }
 
     public String getDigest() {
-        return digest;
+        return digest == null ? "" : digest;
     }
 
     public void setDigest(String digest) {
@@ -92,7 +92,7 @@ public class HomeArticle {
     }
 
     public String getAuthorId() {
-        return authorId;
+        return authorId == null ? "" : authorId;
     }
 
     public void setAuthorId(String authorId) {
