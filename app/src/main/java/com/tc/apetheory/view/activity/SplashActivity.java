@@ -27,7 +27,7 @@ public class SplashActivity extends BaseActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(TestActivity.class, null);
+                startActivity(HomeActivity.class, null);
                 finish();
             }
         }, 2 * 1000);

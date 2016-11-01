@@ -10,4 +10,9 @@
     <string name="username_is_not_phone_number">用户名必须为手机号！</string>
     <string name="password_is_empty">密码不能为空！</string>
     <string name="password_is_not_valid">密码不合法！</string>
+    <string name="loading_more">加载更多</string>
+    <string name="pull_down_refresh">下拉刷新</string>
+    <string name="release_refresh">松开刷新</string>
+    <string name="refreshing">刷新中...</string>
+    <string name="tab_title_home">首页</string>
 </resources>

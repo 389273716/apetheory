@@ -7,7 +7,6 @@ import com.google.gson.reflect.TypeToken;
 import com.tc.apetheory.common.BizInterface;
 import com.tc.apetheory.entity.entities.PageReqEntity;
 import com.tc.apetheory.entity.response.HomeJson;
-import com.tomtop.ttcom.bean.json.BaseJson;
 import com.tomtop.ttcom.http.volley.CustomResponseListenerImpl;
 import com.tomtop.ttcom.http.volley.ResponseCallback;
 import com.tomtop.ttcom.http.volley.VolleyUtil;
@@ -31,13 +30,13 @@ public class HomeModel {
                             String
                                     tag) {
         String url = getUrl(BizInterface.HOME, entity.toString());
-        TypeToken<BaseJson> typeToken = new TypeToken<BaseJson>() {
+        TypeToken<HomeJson> typeToken = new TypeToken<HomeJson>() {
         };
         Map<String, String> headers = BaseModel.getCommonHttpHeaders("token");
 
         CustomResponseListenerImpl listener = new CustomResponseListenerImpl(callback, typeToken
                 .getType());
-        VolleyUtil.getInstance().jsonRequest(url, Request.Method.POST, headers, new Gson().toJson
+        VolleyUtil.getInstance().jsonRequest(url, Request.Method.GET, headers, new Gson().toJson
                         (entity), tag,
                 listener);
     }

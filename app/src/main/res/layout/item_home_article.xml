@@ -36,7 +36,7 @@
             tools:text="2015/03/15"/>
 
         <ImageView
-            android:id="@+id/sdv_home_image"
+            android:id="@+id/iv_home_image"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_below="@+id/tv_home_type_name"
@@ -48,9 +48,9 @@
             style="@style/TitleStyle"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_alignBottom="@id/sdv_home_image"
+            android:layout_alignBottom="@id/iv_home_image"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/sdv_home_image"
+            android:layout_toRightOf="@+id/iv_home_image"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:singleLine="true"
@@ -64,7 +64,7 @@
             android:layout_alignLeft="@+id/tv_home_title"
             android:layout_below="@+id/tv_home_title"
             android:layout_marginTop="1dp"
-            android:layout_toRightOf="@+id/sdv_home_image"
+            android:layout_toRightOf="@+id/iv_home_image"
             android:ellipsize="end"
             android:maxLines="3"
             tools:text="这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要这是文章摘要"/>
