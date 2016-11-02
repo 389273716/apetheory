@@ -5,6 +5,8 @@ import com.tomtop.ttutil.constants.BaseConstants;
 
 public interface ShareConstants extends BaseConstants {
 
-    String VOICE_PATH = "voice_path";
-    String KEY_CURRENT_VOICE_PATH = "key_current_voice_path";
+    public static final String NAME_HOME_CACHE_DATA = "name_home_cache_data";
+    public static final String KEY_HOME_CACHE_DATA = "key_home_cache_data";
+
+
 }

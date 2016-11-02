@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.tc.apetheory.R;
+import com.tc.apetheory.common.ShareConstants;
 import com.tc.apetheory.entity.entities.HomeArticle;
 import com.tc.apetheory.entity.entities.PageReqEntity;
 import com.tc.apetheory.entity.response.HomeJson;
@@ -17,6 +19,7 @@ import com.tc.apetheory.view.adapter.HomeArticleAdapter;
 import com.tc.apetheory.widgets.ListSpacingDecoration;
 import com.tc.apetheory.widgets.refreshholder.BGARefreshLayout;
 import com.tomtop.ttcom.view.adapter.RecyclerBaseAdapter;
+import com.tomtop.ttutil.PreferencesUtil;
 import com.tomtop.ttutil.log.LogUtil;
 
 import java.util.List;
@@ -43,9 +46,21 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
 
     @Override
     public void obtainData() {
-        mHomePresenter = new HomePresenter(this, mBaseViewActivity);
         mPageReqEntity = new PageReqEntity();
         mPage = 1;
+        //获取缓存
+        String homeDataStr = PreferencesUtil.getString(getActivity(), ShareConstants
+                        .NAME_HOME_CACHE_DATA,
+                ShareConstants.KEY_HOME_CACHE_DATA, "");
+        try {
+            HomeJson homeJson = new Gson().fromJson(homeDataStr, HomeJson.class);
+            initData(homeJson.getData());
+            return;
+        } catch (Exception e) {
+            LogUtil.e(e.toString());
+        }
+
+        mHomePresenter = new HomePresenter(this, mBaseViewActivity);
         mHomePresenter.obtainData();
     }
 
@@ -107,6 +122,9 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
     @Override
     public void onSuccess(HomeJson homeJson, String msg) {
         LogUtil.e("load data onSuccess");
+        PreferencesUtil.putString(getActivity(), ShareConstants
+                .NAME_HOME_CACHE_DATA, ShareConstants.KEY_HOME_CACHE_DATA, new Gson().toJson
+                (homeJson));
         initData(homeJson.getData());
 
     }
