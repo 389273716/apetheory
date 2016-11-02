@@ -30,7 +30,7 @@ public class SplashActivity extends BaseActivity {
                 startActivity(HomeActivity.class, null);
                 finish();
             }
-        }, 2 * 1000);
+        }, 1 * 1000);
     }
 
     @Override
