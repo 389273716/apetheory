@@ -67,7 +67,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/tab_title_home"/>
+                android:text="@string/tab_title_scan"/>
         </LinearLayout>
 
         <LinearLayout
@@ -90,7 +90,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/tab_title_home"/>
+                android:text="@string/tab_title_message"/>
         </LinearLayout>
 
         <LinearLayout
@@ -113,7 +113,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:gravity="center"
-                android:text="@string/tab_title_home"/>
+                android:text="@string/tab_title_user_center"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

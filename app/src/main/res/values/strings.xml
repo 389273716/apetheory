@@ -15,4 +15,7 @@
     <string name="release_refresh">松开刷新</string>
     <string name="refreshing">刷新中...</string>
     <string name="tab_title_home">首页</string>
+    <string name="tab_title_user_center">我</string>
+    <string name="tab_title_message">消息</string>
+    <string name="tab_title_scan">探索</string>
 </resources>

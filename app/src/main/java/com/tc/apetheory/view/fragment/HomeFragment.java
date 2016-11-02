@@ -18,6 +18,7 @@ import com.tc.apetheory.presenter.base.IHomeFragment;
 import com.tc.apetheory.view.adapter.HomeArticleAdapter;
 import com.tc.apetheory.widgets.ListSpacingDecoration;
 import com.tc.apetheory.widgets.refreshholder.BGARefreshLayout;
+import com.tc.apetheory.widgets.refreshholder.RefreshHolderUtils;
 import com.tomtop.ttcom.view.adapter.RecyclerBaseAdapter;
 import com.tomtop.ttutil.PreferencesUtil;
 import com.tomtop.ttutil.log.LogUtil;
@@ -40,12 +41,15 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
     private PageReqEntity mPageReqEntity;
     private BGARefreshLayout mRefreshLayout;
     private HomeArticleAdapter mHomeArticleAdapter;
+    private boolean mIsRefresh;
 
     public HomeFragment() {
     }
 
     @Override
     public void obtainData() {
+        mHomePresenter = new HomePresenter(this, mBaseViewActivity);
+
         mPageReqEntity = new PageReqEntity();
         mPage = 1;
         //获取缓存
@@ -60,7 +64,6 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
             LogUtil.e(e.toString());
         }
 
-        mHomePresenter = new HomePresenter(this, mBaseViewActivity);
         mHomePresenter.obtainData();
     }
 
@@ -73,6 +76,23 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
         mRecycleView.setLayoutManager(new LinearLayoutManager(mBaseViewActivity));
         mRecycleView.addItemDecoration(new ListSpacingDecoration(mBaseViewActivity, R.dimen
                 .item_vertical_margin));
+
+        RefreshHolderUtils.initRefreshHolder(mRefreshLayout, getActivity(), true);
+        RefreshHolderUtils.setDelegate(new BGARefreshLayout.BGARefreshLayoutDelegate() {
+            @Override
+            public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
+                mPage = 1;
+                mHomePresenter.obtainData();
+            }
+
+            @Override
+            public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
+                mPage++;
+                mPageReqEntity.setPage(mPage);
+                mHomePresenter.loadMore();
+                return false;
+            }
+        }, mRefreshLayout);
     }
 
     private void initData(List<HomeArticle> list) {
@@ -84,6 +104,12 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
             @Override
             public void onItemClick(View view, int position) {
                 LogUtil.e(position + " pos");
+                if (mHomeArticleAdapter != null) {
+                    HomeArticle item = mHomeArticleAdapter.getItem(position);
+                    if (item != null) {
+                        start(ArticleDetailFragment.newInstance(item.getUrl()));
+                    }
+                }
             }
         });
 
@@ -95,7 +121,6 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
 
     public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
-
         return fragment;
     }
 
@@ -121,6 +146,7 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
 
     @Override
     public void onSuccess(HomeJson homeJson, String msg) {
+        endRefreshView();
         LogUtil.e("load data onSuccess");
         PreferencesUtil.putString(getActivity(), ShareConstants
                 .NAME_HOME_CACHE_DATA, ShareConstants.KEY_HOME_CACHE_DATA, new Gson().toJson
@@ -131,7 +157,14 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
 
     @Override
     public void onFailure(String msg) {
+        endRefreshView();
         LogUtil.e("load data onFailure");
+    }
+
+    private void endRefreshView() {
+        if (mRefreshLayout != null) {
+            RefreshHolderUtils.endPullDownRefresh(mRefreshLayout);
+        }
     }
 
     @Override
@@ -141,15 +174,25 @@ public class HomeFragment extends BaseViewFragment<HomePresenter> implements IHo
 
     @Override
     public void loadMoreSuccees(HomeJson homeJson, String msg) {
+        endLoadMoreView();
         LogUtil.e("loadmore success");
         int count = mHomeArticleAdapter.getItemCount();
         mHomeArticleAdapter.insertItems(homeJson.getData());
-        mRecycleView.smoothScrollToPosition(count + 1);
+        mRecycleView.smoothScrollToPosition(count);
     }
 
     @Override
     public void onloadMoreFailure(String msg) {
+        endLoadMoreView();
+        mPage--;
+        mPageReqEntity.setPage(mPage);
         LogUtil.e(" onloadMoreFailure");
+    }
+
+    private void endLoadMoreView() {
+        if (mRefreshLayout != null) {
+            RefreshHolderUtils.endLoadingMoreRefresh(mRefreshLayout);
+        }
     }
 
     @Override
